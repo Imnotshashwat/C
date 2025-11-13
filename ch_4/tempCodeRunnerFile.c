@@ -1,1 +1,0 @@
- a GP upto n
