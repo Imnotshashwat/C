@@ -1,25 +1,36 @@
 #include <stdio.h>
 int factorial(int num)
 {
-    int fact = 2;
-    for (int i = 2; i < num; i++)
+    if (num == 0 || num == 1)
     {
-        fact = fact * (i+1);
+        return 1;
+    }
+    int fact = 1;
+    for (int i = 2; i <= num; i++)
+    {
+        fact = fact * i;
     }
     return fact;
 }
+
+int combination(int n, int r)
+{
+    return factorial(n) / (factorial(r) * factorial(n - r));
+}
+
 int main()
 {
-    int n, r;
-    printf("enter n: ");
+    int n;
+    printf("enter number of rows: ");
     scanf("%d", &n);
-
-    printf("enter r: ");
-    scanf("%d", &r);
-    
-    int ncr = factorial(n) / (factorial(r) * factorial(n-r));
-    printf("nCr is %d", ncr);
-
-
+    for (int i = 0; i < n; i++) // loop for rows
+    {
+        for (int j = 0; j <= i; j++) // loop for columns
+        {
+            int icj = combination(i, j);
+            printf("%d ", icj);
+        }
+        printf("\n");
+    }
     return 0;
-} 
+}
